@@ -1,0 +1,29 @@
+@import "variables";
+@import "mixins";
+
+.footer {
+  width: 100%;
+
+  .container {
+    border-top: 1px solid $Grayish-blue;
+  }
+
+  .author {
+    padding: 1rem 0 1rem;
+    font-size: var(--smaller-font-size);
+    font-weight: $Weight-400;
+    color: $Dark-grayish-blue;
+    text-align: center;
+    overflow-wrap: break-word;
+
+    &__link {
+      display: inline-block;
+      position: relative;
+      color: $Orange;
+      margin: 0 4px;
+      transition: color 300ms ease-in-out;
+
+      @include hover-link-element($Orange, $Orange, -3px, 1px);
+    }
+  }
+}

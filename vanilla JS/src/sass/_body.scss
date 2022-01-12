@@ -1,0 +1,51 @@
+@import "variables";
+@import "mixins";
+
+.body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: 90px 1fr auto;
+  font-family: $Family-Kumbh-Sans;
+  line-height: 1.4;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1300px;
+  position: relative;
+}
+
+.button--orange {
+  width: 100%;
+  display: block;
+  color: $White;
+  font-size: var(--normal-font-size);
+  font-weight: $Weight-700;
+  text-align: center;
+  text-transform: capitalize;
+  padding: 0.95rem;
+  border-radius: 10px;
+  background-color: $Orange;
+  transition: 250ms ease-in-out;
+  
+  &:hover,
+  &:focus-within {
+    opacity: 0.7;
+    box-shadow: 0px 3px 6px 0px $Pale-orange;
+  }
+}
+
+.span {
+  &--gray {
+    color: $Dark-grayish-blue;
+  }
+
+  &--black {
+    color: $Black;
+  }
+}

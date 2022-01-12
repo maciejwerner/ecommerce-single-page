@@ -1,0 +1,310 @@
+@import "variables";
+@import "mixins";
+
+.main {
+  // display: grid;
+  // place-content: center;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    justify-items: center;
+  }
+
+  .box {
+    max-width: 460px;
+
+    &--images {
+      display: grid;
+      gap: 2rem;
+    }
+  }
+
+  .image__wrapper {
+    position: relative;
+  }
+
+  .main__image {
+    border-radius: 1rem;
+    cursor: pointer;
+  }
+
+  // BUTTONS
+  .button--prev,
+  .button--next {
+    @include flex(row, center, center);
+    $size: 40px;
+    width: $size;
+    height: $size;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $White;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @include hide-content;
+  }
+
+  .button--prev {
+    left: 40px;
+  }
+
+  .button--next {
+    right: 0px;
+  }
+
+  .arrow__icon {
+    transition: fill 250ms ease-in-out;
+  }
+
+  .button--prev:hover .arrow__icon path,
+  .button--prev:focus-within .arrow__icon path,
+  .button--next:hover .arrow__icon path,
+  .button--next:focus-within .arrow__icon path {
+    fill: none;
+    stroke: $Orange;
+  }
+
+  // THUMBS
+  .thumb__wrapper {
+    width: 100%;
+  }
+
+  .thumb__list {
+    width: 100%;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    &--modal {
+      padding: 0 1rem;
+    }
+  }
+
+  .thumb__box {
+    position: relative;
+    z-index: 10;
+    transition: 250ms ease-in-out;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &::before {
+      content: '';  
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      transition: background-color 250ms ease-in-out;
+    }
+
+    &:hover::before {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .thumb__box--active {
+    box-shadow: 0px 0px 1px 2px $Orange;
+    
+    &::before {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  // DESCRIPTION
+  .box__subtitle {
+    color: $Orange;
+    font-size: var(--small-font-size);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: $Weight-700;
+    margin-bottom: var(--mb-1);
+  }
+
+  .box__title {
+    color: $Black;
+    font-size: var(--big-font-size);
+    font-weight: $Weight-700;
+    line-height: 1.1;
+    margin-bottom: var(--mb-2);
+  }
+
+  .box__text {
+    color: $Dark-grayish-blue;
+    font-size: var(--normal-font-size);
+    font-weight: $Weight-400;
+    line-height: 1.6;
+    margin-bottom: var(--mb-1-5);
+  }
+
+  .price__wrapper {
+    @include flex(row, center, space-between);
+    gap: 7px;
+    margin-bottom: var(--mb-1-5);
+  }
+
+  .promo__price {
+    @include flex(row, center, null);
+    color: $Black;
+    font-size: var(--h2-font-size);
+    font-weight: $Weight-700;
+  }
+
+  .discount {
+    color: $Orange;
+    font-size: var(--normal-font-size);
+    padding: 3px 7px;
+    background-color: $Pale-orange;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+  }
+
+  .regular__price {
+    color: $Grayish-blue;
+    font-size: var(--normal-font-size);
+    font-weight: $Weight-700;
+    text-decoration: line-through;
+  }
+
+  .action__wrapper {
+    @include flex(row, center, null);
+    gap: 1rem;
+  }
+
+  .action__buttons {
+    display: grid;
+    gap: 0.225rem;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 10px;
+    background: $Light-grayish-blue;
+  }
+
+  .item__quantity {
+    @include flex(row, center, center);
+    color: $Black;
+    font-size: var(--normal-font-size);
+    font-weight: $Weight-700;
+  }
+
+  .item__quantity,
+  .button--amount {
+    min-height: 3rem;
+    min-width: 3rem;
+  }
+
+  .button--amount {
+    @include flex(row, center, center);
+    // transition: box-shadow 250ms ease-in-out;
+
+    // &:hover,
+    // &:focus-within {
+    //   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 #E5E5E5;
+    // }
+  }
+
+  .cart__icon--add {
+    margin-right: 1rem;
+  }
+
+  @include media-mobile-sm {
+    .thumb__wrapper {
+      display: none;
+    }
+
+    .button--prev,
+    .button--next {
+      @include show-content;
+    }
+
+    .action__wrapper {
+      @include flex(column, null, null);
+    }
+
+    .action__buttons {
+      width: 100%;
+    }
+
+  }
+
+  @include media-tablet-lg {
+    .container {
+      @include flex(row, center, center);
+      gap: 4rem;
+    }
+
+    .price__wrapper {
+      @include flex(column, flex-start, null);
+    }
+  } 
+  // MODAL
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background: rgba(0, 0, 0, 0.6);
+    display: grid;
+    align-items: start;
+    justify-content: center;
+    @include hide-content;
+    transition: 300ms ease-in;
+
+    .close__icon {
+      pointer-events: none;
+    }
+
+    .button--modal {
+      padding: 0.35rem;
+      align-self: flex-end;
+      justify-self: flex-end;
+      margin-bottom: var(--mb-0-5);
+
+      svg path {
+        fill: $White;
+        transition: 250ms ease-in-out;
+      }
+
+      &:hover path,
+      &:focus-within path {
+        fill: $Orange;
+      }
+    }
+
+    &--active {
+      z-index: 200;
+      @include show-content
+    }
+
+    .modal__button--prev,
+    .modal__button--next {
+      @include flex(row, center, center);
+      $size: 50px;
+      width: $size;
+      height: $size;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $White;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .modal__button--prev {
+      left: -20px;
+    }
+
+    .modal__button--next {
+      right: -20px;
+    }
+
+    .modal__button--prev:hover .arrow__icon path,
+    .modal__button--prev:focus-within .arrow__icon path,
+    .modal__button--next:hover .arrow__icon path,
+    .modal__button--next:focus-within .arrow__icon path {
+      fill: none;
+      stroke: $Orange;
+    }
+  }
+
+  
+}

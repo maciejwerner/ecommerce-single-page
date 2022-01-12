@@ -1,0 +1,64 @@
+body {
+  text-rendering: optimizeSpeed;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  display: inline-block;
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+  &:hover,
+  &:focus-within {
+    cursor: pointer;
+  }
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+section {
+  width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

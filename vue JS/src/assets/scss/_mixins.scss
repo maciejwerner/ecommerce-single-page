@@ -1,0 +1,93 @@
+@import 'variables';
+
+@mixin flex($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin hide-content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@mixin show-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+@mixin hover-link-element($color, $colorBefore, $bottom, $height) {
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: $bottom;
+    width: 100%;
+    height: $height;
+    background-color: $colorBefore;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 300ms ease-in-out;
+  }
+
+  &:hover,
+  &:focus-within {
+    color: $color;
+
+    &::before {
+      transform: scaleX(100%);
+      transform-origin: left;
+    }
+  }
+}
+
+@mixin media-mobile-sm {
+  @media screen and (max-width: $Breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin media-mobile-sm-up {
+  @media screen and (min-width: calc(#{$Breakpoint-sm})) {
+    @content;
+  }
+}
+
+@mixin media-between-mobile-sm-and-media-tablet-lg {
+  @media screen and (min-width: calc(#{$Breakpoint-sm} + 1px)) and (max-width: calc(#{$Breakpoint-lg} - 1px)) {
+    @content;
+  }
+}
+
+@mixin media-between-mobile-xs-and-media-tablet-md {
+  @media screen and (min-width: calc(#{$Breakpoint-xs} + 1px)) and (max-width: calc(#{$Breakpoint-md} - 1px)) {
+    @content;
+  }
+}
+
+@mixin media-between-mobile-xs-and-media-tablet-lg {
+  @media screen and (min-width: calc(#{$Breakpoint-xs} + 1px)) and (max-width: calc(#{$Breakpoint-lg} - 1px)) {
+    @content;
+  }
+}
+
+@mixin media-tablet-md {
+  @media screen and (min-width: $Breakpoint-md) {
+    @content;
+  } 
+}
+
+@mixin media-tablet-lg {
+  @media screen and (min-width: $Breakpoint-lg) {
+    @content;
+  } 
+}
+
+@mixin media-tablet-xl {
+  @media screen and (min-width: $Breakpoint-xl) {
+    @content;
+  }
+}
