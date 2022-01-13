@@ -27,6 +27,7 @@ Users should be able to:
 ### Built with
 
 First I built this project with vanilla js - vanilla JS directory.
+
 My second attempt was to build this project with the Vue JS framework - vue JS directory - [Vue.js](https://vuejs.org/).
 I used options api for this project.
 
@@ -40,7 +41,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/nraufu/quote-generator
+$ git clone https://github.com/maciejwerner/ecommerce-single-page
 
 # Install dependencies
 $ npm install
